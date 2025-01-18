@@ -4,7 +4,7 @@ Puma robot simulator including inverse kinematics
 ## Build
 Warning: due to using newest C++ 23 features, the prerequisites for building this project are quite restrictive:
  - CMake 3.31.0+
- - clang 18.2+
+ - clang 18.1.3+
  - Ninja 1.11+
  - libc++ and libc++-abi installed
  - libglfw3 installed
