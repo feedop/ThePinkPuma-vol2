@@ -105,9 +105,7 @@ public:
 		l4 = newL4;
 	}
 
-private:
-	friend class GuiController;
-
+public: // Hack, friend not working
 	SimulationConfig config;
 	SimulationData data = { 0, 0, 0, 1.0f, 0, 0, 0, 0, 0, 1.0f, 0, 0, 0 };
 	float l1, l3, l4;

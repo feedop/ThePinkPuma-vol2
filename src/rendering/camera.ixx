@@ -91,8 +91,7 @@ public:
 		update();
 	}
 
-private:
-	friend class GuiController;
+public: // Hack, friend not working
 
 	inline static const glm::vec3 initialRight{ 1.0f, 0.0f, 0.0f };
 	inline static const glm::vec3 initialUp{ 0.0f, 1.0f, 0.0f };
