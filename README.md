@@ -33,8 +33,13 @@ In the build directory:
 The app consists of two windows - the scene and config.
 Have fun messing around with the different config options to find a visualization method that best suits your taste.
 
-Controls - right mouse button:
+Mouse controls - right mouse button:
  - RBM - rotate scene
  - SHIFT + RBM - camera movement
  - CTRL + RBM - 3d cursor rotation
  - CTRL + SHIFT + RBM - 3d cursor movement
+ - scroll wheel - zoom in/out
+
+Keyboard controls - move the nth joint
+ - keys A,S,D,F,G,H - increase the first/second/.../nth parameter respectively
+ - keys Z,X,C,V,B,N - decrease the first/second/.../nth parameter respectively
