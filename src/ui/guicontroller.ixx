@@ -68,7 +68,23 @@ public:
         }
 
         // Render the config window
-        ImGui::Begin("Configuration window", nullptr, ImGuiWindowFlags_None);
+        const float PAD = 10.0f;
+        const int location = 0;
+        const ImGuiViewport* viewport = ImGui::GetMainViewport();
+        ImVec2 work_pos = viewport->WorkPos; // Use work area to avoid menu-bar/task-bar, if any!
+        ImVec2 work_size = viewport->WorkSize;
+        ImVec2 window_pos, window_pos_pivot;
+        window_pos.x = (location & 1) ? (work_pos.x + work_size.x - PAD) : (work_pos.x + PAD);
+        window_pos.y = (location & 2) ? (work_pos.y + work_size.y - PAD) : (work_pos.y + PAD);
+        window_pos_pivot.x = (location & 1) ? 1.0f : 0.0f;
+        window_pos_pivot.y = (location & 2) ? 1.0f : 0.0f;
+        ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
+        ImGui::SetNextWindowViewport(viewport->ID);
+        ImGui::SetNextWindowBgAlpha(0.3f);
+        ImGui::SetNextWindowSizeConstraints(ImVec2(0, 0), ImVec2(350, 700));
+        ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove;
+
+        ImGui::Begin("Configuration window", nullptr, window_flags);
         renderConfig(data);
         ImGui::End();
 
@@ -151,13 +167,16 @@ private:
         dataChanged |= ImGui::SliderFloat("l3", &renderer.l3, 0.2f, 5.0f);
         dataChanged |= ImGui::SliderFloat("l4", &renderer.l4, 0.2f, 5.0f);
 
-        ImGui::InputFloat3("Start position (x,y,z)", reinterpret_cast<float*>(&config.startPosition));
-        ImGui::InputFloat3("End position (x,y,z)", reinterpret_cast<float*>(&config.endPosition));
+        ImGui::NewLine();
+        ImGui::Text("Position (x,y,z)");
+        ImGui::InputFloat3("Start position", reinterpret_cast<float*>(&config.startPosition));
+        ImGui::InputFloat3("End position", reinterpret_cast<float*>(&config.endPosition));
 
         static glm::vec3 startRotation{ 0,0,0 };
         static glm::vec3 endRotation{ 0,0,0 };
-        ImGui::InputFloat3("Start rotation - Euler (degrees)", reinterpret_cast<float*>(&startRotation));
-        ImGui::InputFloat3("End rotation - Euler (degrees)", reinterpret_cast<float*>(&endRotation));
+        ImGui::Text("Rotation - Euler angles (degrees)");
+        ImGui::InputFloat3("Start rotation", reinterpret_cast<float*>(&startRotation));
+        ImGui::InputFloat3("End rotation", reinterpret_cast<float*>(&endRotation));
 
         if (ImGui::Button("Set start from cursor"))
         {

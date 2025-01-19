@@ -5,8 +5,6 @@ import glm;
 
 import math;
 
-class GuiController;
-
 export class Camera
 {
 public:

@@ -8,8 +8,6 @@ import inversekinematics;
 import :config;
 import :data;
 
-class GuiController;
-
 export class SimulationEngine
 {
 public:
