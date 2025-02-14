@@ -43,3 +43,5 @@ Mouse controls - right mouse button:
 Keyboard controls - move the nth joint
  - keys A,S,D,F,G,H - increase the first/second/.../nth parameter respectively
  - keys Z,X,C,V,B,N - decrease the first/second/.../nth parameter respectively
+
+![obraz](https://github.com/user-attachments/assets/6d3bb3a1-ab6e-46ae-bb87-36d5e1f9ffad)
